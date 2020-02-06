@@ -1,3 +1,5 @@
+# Django projects usually grow and start containing more than one application. By having each application define its own URLs, and then importing each set of those into the project, it prevents the project urls.py from becoming bloated and hard to read/maintain.
+
 """libraryproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,9 +16,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+# from django.urls import path
 from libraryapp.models import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('libraryapp.urls')),
 ]
